@@ -3,7 +3,7 @@
 const express = require('express');
 // Create an router instance (aka "mini-app")
 const router = express.Router();
-const { Note } = require('../models/note')
+const Note = require('../models/note')
 
 /* ========== GET/READ ALL ITEM ========== */
 router.get('/notes', (req, res, next) => {
@@ -87,8 +87,17 @@ router.put('/notes/:id', (req, res, next) => {
 /* ========== DELETE/REMOVE A SINGLE ITEM ========== */
 router.delete('/notes/:id', (req, res, next) => {
 
-  console.log('Delete a Note');
-  res.status(204).end();
+  Note.findByIdAndRemove({_id: req.params.id})
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    console.log('error while updating note', err);
+    res.json(err);
+  });
+ 
+  // console.log('Delete a Note');
+  // res.status(204).end();
 
 });
 

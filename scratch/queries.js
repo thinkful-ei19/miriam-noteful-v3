@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const { MONGODB_URI } = require('../config');
 
-const { Note } = require('../models/note');
+const Note = require('../models/note');
 
 // Originally Find/Search for notes using Note.find
 // Modified for mini challenge, improved using the $or Operator, 

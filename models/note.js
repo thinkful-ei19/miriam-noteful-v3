@@ -3,8 +3,8 @@
 const mongoose = require('mongoose');
 
 const notesSchema = new mongoose.Schema({
-//    title: { type: String, index: true, required: true },
-    title: { type: String, index: true },
+    title: { type: String, index: true, required: true },
+//    title: { type: String, index: true },
     content: { type: String, index: true },
     created: { type: Date, default: Date.now }
 });
@@ -26,4 +26,4 @@ notesSchema.set('toObject', {
 
 const Note = mongoose.model('Note', notesSchema);
 
-module.exports = { Note };
+module.exports = Note;
